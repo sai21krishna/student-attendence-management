@@ -5,6 +5,10 @@ public class AttendanceDtos {
         public Long userId;
         public String qrData;
     }
+    // For QR-only marking when userId is inferred elsewhere (e.g., JWT) or not required
+    public static class QrOnlyRequestDto {
+        public String qrData;
+    }
     public static class AttendanceResponseDto {
         public Long id;
         public Long userId;

@@ -2,6 +2,7 @@ package Attendence.SIH.Attendence.SIH.controller;
 
 import Attendence.SIH.Attendence.SIH.dto.AttendanceDtos.AttendanceRequestDto;
 import Attendence.SIH.Attendence.SIH.dto.AttendanceDtos.AttendanceResponseDto;
+import Attendence.SIH.Attendence.SIH.dto.AttendanceDtos.QrOnlyRequestDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/api/attendance")
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173"}, allowCredentials = "true")
 public class AttendanceController {
 
     private static final AtomicLong IDS = new AtomicLong(1);
@@ -26,6 +27,24 @@ public class AttendanceController {
         AttendanceResponseDto a = new AttendanceResponseDto();
         a.id = IDS.getAndIncrement();
         a.userId = req.userId;
+        a.status = "PRESENT";
+        a.checkInTime = Instant.now().toString();
+        a.qrCodeDataUsed = req.qrData;
+        STORE.put(a.id, a);
+        return ResponseEntity.ok(a);
+    }
+
+    // New: Mark attendance using only QR data (User inferred or not required)
+    @PostMapping("/mark-qr")
+    public ResponseEntity<AttendanceResponseDto> markByQr(@RequestBody QrOnlyRequestDto req) {
+        // In stub mode, accept any non-null QR data to make UI flows smoother.
+        if (req.qrData == null || req.qrData.isBlank()) {
+            return ResponseEntity.badRequest().header("X-Error", "qrData is required").build();
+        }
+        AttendanceResponseDto a = new AttendanceResponseDto();
+        a.id = IDS.getAndIncrement();
+        // In a real app, userId could be derived from security context (JWT). Left null for stub.
+        a.userId = null;
         a.status = "PRESENT";
         a.checkInTime = Instant.now().toString();
         a.qrCodeDataUsed = req.qrData;
