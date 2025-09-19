@@ -1,0 +1,225 @@
+/* Custom CSS enhancements for the Attendance App */
+
+/* Custom brand colors and variables */
+:root {
+  --brand-50: #eef5ff;
+  --brand-100: #d9e9ff;
+  --brand-200: #b7d3ff;
+  --brand-300: #8fbbff;
+  --brand-400: #6aa6ff;
+  --brand-500: #4f8ff5;
+  --brand-600: #3a73d6;
+  --brand-700: #2f5bb0;
+  --brand-800: #294d91;
+  --brand-900: #223e73;
+  --shadow-glow: 0 10px 30px rgba(79, 143, 245, 0.35);
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  @apply bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply hover:bg-blue-700 hover:-translate-y-0.5 hover:shadow-lg;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500/30;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply hover:bg-gray-300 hover:-translate-y-0.5 hover:shadow-md;
+  @apply focus:outline-none focus:ring-2 focus:ring-gray-400/30;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply hover:bg-red-700 hover:-translate-y-0.5 hover:shadow-lg;
+  @apply focus:outline-none focus:ring-2 focus:ring-red-500/30;
+}
+
+.btn-success {
+  @apply bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply hover:bg-green-700 hover:-translate-y-0.5 hover:shadow-lg;
+  @apply focus:outline-none focus:ring-2 focus:ring-green-500/30;
+}
+
+/* Card components */
+.card {
+  @apply bg-white rounded-xl border border-gray-200 shadow-sm transition-all duration-200;
+  @apply hover:shadow-md hover:-translate-y-1;
+}
+
+.card-header {
+  @apply px-6 py-4 border-b border-gray-200 bg-gray-50/50 rounded-t-xl;
+}
+
+.card-body {
+  @apply px-6 py-4;
+}
+
+.card-footer {
+  @apply px-6 py-4 border-t border-gray-200 bg-gray-50/50 rounded-b-xl;
+}
+
+/* Form enhancements */
+.form-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500;
+  @apply hover:border-gray-400;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-group {
+  @apply mb-4;
+}
+
+/* Navigation enhancements */
+.nav-button {
+  @apply px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200;
+  @apply hover:-translate-y-0.5 hover:shadow-md;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-1;
+}
+
+.nav-button-primary {
+  @apply nav-button bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500/30;
+}
+
+.nav-button-secondary {
+  @apply nav-button bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400/30;
+}
+
+/* Table styles */
+.table {
+  @apply w-full border-collapse bg-white rounded-lg overflow-hidden shadow-sm;
+}
+
+.table th {
+  @apply px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50 border-b border-gray-200;
+}
+
+.table td {
+  @apply px-4 py-3 text-sm text-gray-900 border-b border-gray-200;
+}
+
+.table tbody tr {
+  @apply transition-colors duration-150 hover:bg-gray-50;
+}
+
+/* Status badges */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply badge bg-green-100 text-green-800;
+}
+
+.badge-warning {
+  @apply badge bg-yellow-100 text-yellow-800;
+}
+
+.badge-danger {
+  @apply badge bg-red-100 text-red-800;
+}
+
+.badge-info {
+  @apply badge bg-blue-100 text-blue-800;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin;
+}
+
+/* Glassmorphism effect */
+.glass {
+  @apply bg-white/80 backdrop-blur-sm border border-white/20;
+}
+
+/* Hover lift effect */
+.hover-lift {
+  @apply transition-transform duration-200 hover:-translate-y-1;
+}
+
+/* Focus ring utility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:ring-offset-2;
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-brand {
+  background: linear-gradient(135deg, var(--brand-400) 0%, var(--brand-600) 100%);
+}
+
+/* Animation utilities */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .nav-button {
+    @apply px-2 py-1 text-xs;
+  }
+  
+  .card {
+    @apply mx-2;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .card {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+  
+  .card-header,
+  .card-footer {
+    @apply bg-gray-700/50 border-gray-600;
+  }
+  
+  .form-input {
+    @apply bg-gray-700 border-gray-600 text-white;
+    @apply focus:border-blue-400;
+  }
+  
+  .table {
+    @apply bg-gray-800;
+  }
+  
+  .table th {
+    @apply bg-gray-700 text-gray-300;
+  }
+  
+  .table td {
+    @apply text-gray-100 border-gray-700;
+  }
+  
+  .table tbody tr:hover {
+    @apply bg-gray-700;
+  }
+}
